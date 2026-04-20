@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Results</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      margin-top: 100px;
+    }
+    input {
+      padding: 10px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+    #result {
+      margin-top: 30px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Enter your ID</h2>
+<input id="idInput" placeholder="Your ID">
+<button onclick="checkID()">See result</button>
+
+<div id="result"></div>
+
+<script>
+const data = {
+  "A1B2C3": "Accepted",
+  "D4E5F6": "Rejected",
+  "G7H8I9": "Waiting list"
+};
+
+function checkID() {
+  const id = document.getElementById("idInput").value.trim();
+  const resultDiv = document.getElementById("result");
+
+  if (data[id]) {
+    resultDiv.innerText = data[id];
+  } else {
+    resultDiv.innerText = "ID not found";
+  }
+}
+</script>
+
+</body>
+</html>
