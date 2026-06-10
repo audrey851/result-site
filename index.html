@@ -2,28 +2,51 @@
 <html>
 <head>
   <title>Results</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      margin-top: 100px;
+    }
+    input {
+      padding: 10px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+    #result {
+      margin-top: 30px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
 
 <h2>Enter your ID</h2>
+<p>Les résultats seront disponibles une fois toutes les données collectées (prévu à partir du 1 juin).</p>
 <input id="idInput" placeholder="Your ID">
 <button onclick="checkID()">See result</button>
 
-<div id="result" style="margin-top: 30px; font-size: 20px; white-space: pre-line;"></div>
+<div id="result"></div>
 
 <script>
 const data = {
-  "181891": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 4/5\nProbabilité associée : 70%-80%\nRésultat final : Bonus obtenu"
+  "A1B2C3": "Accepted",
+  "D4E5F6": "Rejected",
+  "G7H8I9": "Waiting list"
 };
 
 function checkID() {
-  const enteredID = document.getElementById("idInput").value.trim();
+  const id = document.getElementById("idInput").value.trim();
   const resultDiv = document.getElementById("result");
 
-  if (data[enteredID]) {
-    resultDiv.innerText = data[enteredID];
+  if (data[id]) {
+    resultDiv.innerText = data[id];
   } else {
-    resultDiv.innerText = "ID not found. You entered: " + enteredID;
+    resultDiv.innerText = "ID not found";
   }
 }
 </script>
