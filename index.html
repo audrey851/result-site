@@ -2,145 +2,28 @@
 <html>
 <head>
   <title>Results</title>
-  <style>
-    body {
-      font-family: Arial;
-      text-align: center;
-      margin-top: 100px;
-    }
-    input {
-      padding: 10px;
-      font-size: 16px;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-    }
-    #result {
-      margin-top: 30px;
-      font-size: 20px;
-      font-weight: bold;
-      white-space: pre-line;
-    }
-  </style>
 </head>
 <body>
 
 <h2>Enter your ID</h2>
-<p>Les résultats individuels sont maintenant disponibles. Veuillez entrer votre identifiant de participation.</p>
 <input id="idInput" placeholder="Your ID">
 <button onclick="checkID()">See result</button>
 
-<div id="result"></div>
+<div id="result" style="margin-top: 30px; font-size: 20px; white-space: pre-line;"></div>
 
 <script>
 const data = {
-"257781": "Condition : Individual Penalty\nManche tirée au sort : B2M2\nVotre score : 4/5\nProbabilité associée : 70%-80%\nRésultat final : Pénalité évitée",
-  "950112": "Condition : Team Bonus\nManche tirée au sort : B2M2\nVotre score personnel : 3/5\nScore du binôme : 8/10\nProbabilité associée : 81%-90%\nRésultat final : Bonus obtenu",
-  "181891": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 4/5\nProbabilité associée : 70%-80%\nRésultat final : Bonus obtenu",
-  "101258": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 4/5\nProbabilité associée : 70%-80%\nRésultat final : Bonus obtenu",
-  "193364": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 5/5\nProbabilité associée : 90%-100%\nRésultat final : Bonus obtenu",
-  "855549": "Condition : Team Bonus\nManche tirée au sort : B2M2\nVotre score personnel : 3/5\nScore du binôme : 7/10\nProbabilité associée : 70%-80%\nRésultat final : Bonus obtenu",
-  "329835": "Condition : Team Bonus\nManche tirée au sort : B2M2\nVotre score personnel : 5/5\nScore du binôme : 10/10\nProbabilité associée : 96%-100%\nRésultat final : Bonus obtenu",
-  "121369": "Condition : Individual Penalty\nManche tirée au sort : B2M2\nVotre score : 5/5\nProbabilité associée : 90%-100%\nRésultat final : Pénalité évitée",
-  "911629": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 3/5\nProbabilité associée : 50%-60%\nRésultat final : Bonus obtenu",
-  "127705": "Condition : Team Bonus\nManche tirée au sort : B2M2\nVotre score personnel : 3/5\nScore du binôme : 7/10\nProbabilité associée : 70%-80%\nRésultat final : Bonus obtenu",
-  "528799": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 4/5\nProbabilité associée : 70%-80%\nRésultat final : Bonus obtenu",
-  "735374": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 5/5\nProbabilité associée : 90%-100%\nRésultat final : Bonus obtenu",
-  "999296": "Condition : Team Penalty\nManche tirée au sort : B2M2\nVotre score personnel : 5/5\nScore du binôme : 9/10\nProbabilité associée : 91%-95%\nRésultat final : Pénalité évitée",
-  "379695": "Condition : Team Penalty\nManche tirée au sort : B2M2\nVotre score personnel : 5/5\nScore du binôme : 8/10\nProbabilité associée : 81%-90%\nRésultat final : Pénalité évitée",
-  "927594": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 5/5\nProbabilité associée : 90%-100%\nRésultat final : Bonus obtenu",
-  "192084": "Condition : Team Bonus\nManche tirée au sort : B2M2\nVotre score personnel : 4/5\nScore du binôme : 9/10\nProbabilité associée : 91%-95%\nRésultat final : Bonus obtenu",
-  "390740": "Condition : Individual Penalty\nManche tirée au sort : B2M2\nVotre score : 4/5\nProbabilité associée : 70%-80%\nRésultat final : Pénalité évitée",
-  "315136": "Condition : Team Bonus\nManche tirée au sort : B2M2\nVotre score personnel : 4/5\nScore du binôme : 7/10\nProbabilité associée : 70%-80%\nRésultat final : Bonus obtenu",
-  "479967": "Condition : Individual Penalty\nManche tirée au sort : B2M2\nVotre score : 4/5\nProbabilité associée : 70%-80%\nRésultat final : Pénalité appliquée",
-  "312346": "Condition : Individual Penalty\nManche tirée au sort : B2M2\nVotre score : 3/5\nProbabilité associée : 50%-60%\nRésultat final : Pénalité évitée",
-  "389722": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 5/5\nProbabilité associée : 90%-100%\nRésultat final : Bonus obtenu",
-  "773886": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 2/5\nProbabilité associée : 30%-40%\nRésultat final : Bonus non obtenu",
-  "473447": "Condition : Team Penalty\nManche tirée au sort : B2M2\nVotre score personnel : 4/5\nScore du binôme : 9/10\nProbabilité associée : 91%-95%\nRésultat final : Pénalité évitée",
-  "146385": "Condition : Team Bonus\nManche tirée au sort : B2M2\nVotre score personnel : 4/5\nScore du binôme : 9/10\nProbabilité associée : 91%-95%\nRésultat final : Bonus obtenu",
-  "682383": "Condition : Individual Penalty\nManche tirée au sort : B2M2\nVotre score : 4/5\nProbabilité associée : 70%-80%\nRésultat final : Pénalité évitée",
-  "356555": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 5/5\nProbabilité associée : 90%-100%\nRésultat final : Bonus obtenu",
-  "806336": "Condition : Team Penalty\nManche tirée au sort : B2M2\nVotre score personnel : 4/5\nScore du binôme : 9/10\nProbabilité associée : 91%-95%\nRésultat final : Pénalité évitée",
-  "532766": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 5/5\nProbabilité associée : 90%-100%\nRésultat final : Bonus obtenu",
-  "132536": "Condition : Team Bonus\nManche tirée au sort : B2M2\nVotre score personnel : 5/5\nScore du binôme : 9/10\nProbabilité associée : 91%-95%\nRésultat final : Bonus obtenu",
-  "906409": "Condition : Team Bonus\nManche tirée au sort : B2M2\nVotre score personnel : 4/5\nScore du binôme : 9/10\nProbabilité associée : 91%-95%\nRésultat final : Bonus obtenu",
-  "787972": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 5/5\nProbabilité associée : 90%-100%\nRésultat final : Bonus obtenu",
-  "488548": "Condition : Individual Penalty\nManche tirée au sort : B2M2\nVotre score : 4/5\nProbabilité associée : 70%-80%\nRésultat final : Pénalité évitée",
-  "418290": "Condition : Team Penalty\nManche tirée au sort : B2M2\nVotre score personnel : 4/5\nScore du binôme : 8/10\nProbabilité associée : 81%-90%\nRésultat final : Pénalité évitée",
-  "493268": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 5/5\nProbabilité associée : 90%-100%\nRésultat final : Bonus obtenu",
-  "325587": "Condition : Team Bonus\nManche tirée au sort : B2M2\nVotre score personnel : 5/5\nScore du binôme : 10/10\nProbabilité associée : 96%-100%\nRésultat final : Bonus obtenu",
-  "917944": "Condition : Team Bonus\nManche tirée au sort : B2M2\nVotre score personnel : 5/5\nScore du binôme : 9/10\nProbabilité associée : 91%-95%\nRésultat final : Bonus obtenu",
-  "900424": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 5/5\nProbabilité associée : 90%-100%\nRésultat final : Bonus obtenu",
-  "501807": "Condition : Team Penalty\nManche tirée au sort : B2M2\nVotre score personnel : 5/5\nScore du binôme : 9/10\nProbabilité associée : 91%-95%\nRésultat final : Pénalité évitée",
-  "283698": "Condition : Team Penalty\nManche tirée au sort : B2M2\nVotre score personnel : 5/5\nScore du binôme : 9/10\nProbabilité associée : 91%-95%\nRésultat final : Pénalité évitée",
-  "398442": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 5/5\nProbabilité associée : 90%-100%\nRésultat final : Bonus obtenu",
-  "741125": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 5/5\nProbabilité associée : 90%-100%\nRésultat final : Bonus obtenu",
-  "296100": "Condition : Team Bonus\nManche tirée au sort : B2M2\nVotre score personnel : 4/5\nScore du binôme : 8/10\nProbabilité associée : 81%-90%\nRésultat final : Bonus obtenu",
-  "432538": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 5/5\nProbabilité associée : 90%-100%\nRésultat final : Bonus obtenu",
-  "542259": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 5/5\nProbabilité associée : 90%-100%\nRésultat final : Bonus non obtenu",
-  "516018": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 5/5\nProbabilité associée : 90%-100%\nRésultat final : Bonus obtenu",
-  "159540": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 3/5\nProbabilité associée : 50%-60%\nRésultat final : Bonus obtenu",
-  "593238": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 3/5\nProbabilité associée : 50%-60%\nRésultat final : Bonus non obtenu",
-  "809350": "Condition : Team Penalty\nManche tirée au sort : B2M2\nVotre score personnel : 4/5\nScore du binôme : 9/10\nProbabilité associée : 91%-95%\nRésultat final : Pénalité évitée",
-  "930768": "Condition : Team Penalty\nManche tirée au sort : B2M2\nVotre score personnel : 5/5\nScore du binôme : 9/10\nProbabilité associée : 91%-95%\nRésultat final : Pénalité évitée",
-  "628844": "Condition : Individual Penalty\nManche tirée au sort : B2M2\nVotre score : 4/5\nProbabilité associée : 70%-80%\nRésultat final : Pénalité évitée",
-  "756974": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 5/5\nProbabilité associée : 90%-100%\nRésultat final : Bonus obtenu",
-  "672299": "Condition : Individual Penalty\nManche tirée au sort : B2M2\nVotre score : 5/5\nProbabilité associée : 90%-100%\nRésultat final : Pénalité évitée",
-  "156025": "Condition : Team Bonus\nManche tirée au sort : B2M2\nVotre score personnel : 4/5\nScore du binôme : 7/10\nProbabilité associée : 70%-80%\nRésultat final : Bonus obtenu",
-  "360403": "Condition : Team Penalty\nManche tirée au sort : B2M2\nVotre score personnel : 4/5\nScore du binôme : 5/10\nProbabilité associée : 45%-55%\nRésultat final : Pénalité appliquée",
-  "103050": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 4/5\nProbabilité associée : 70%-80%\nRésultat final : Bonus obtenu",
-  "891209": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 2/5\nProbabilité associée : 30%-40%\nRésultat final : Bonus non obtenu",
-  "274924": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 5/5\nProbabilité associée : 90%-100%\nRésultat final : Bonus obtenu",
-  "976818": "Condition : Team Bonus\nManche tirée au sort : B2M2\nVotre score personnel : 3/5\nScore du binôme : 8/10\nProbabilité associée : 81%-90%\nRésultat final : Bonus obtenu",
-  "126317": "Condition : Individual Penalty\nManche tirée au sort : B2M2\nVotre score : 4/5\nProbabilité associée : 70%-80%\nRésultat final : Pénalité évitée",
-  "913699": "Condition : Team Penalty\nManche tirée au sort : B2M2\nVotre score personnel : 5/5\nScore du binôme : 10/10\nProbabilité associée : 96%-100%\nRésultat final : Pénalité évitée",
-  "263446": "Condition : Team Penalty\nManche tirée au sort : B2M2\nVotre score personnel : 4/5\nScore du binôme : 8/10\nProbabilité associée : 81%-90%\nRésultat final : Pénalité évitée",
-  "168093": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 4/5\nProbabilité associée : 70%-80%\nRésultat final : Bonus obtenu",
-  "219037": "Condition : Team Penalty\nManche tirée au sort : B2M2\nVotre score personnel : 2/5\nScore du binôme : 6/10\nProbabilité associée : 56%-65%\nRésultat final : Pénalité évitée",
-  "404374": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 3/5\nProbabilité associée : 50%-60%\nRésultat final : Bonus non obtenu",
-  "807488": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 4/5\nProbabilité associée : 70%-80%\nRésultat final : Bonus obtenu",
-  "412851": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 5/5\nProbabilité associée : 90%-100%\nRésultat final : Bonus obtenu",
-  "959000": "Condition : Team Penalty\nManche tirée au sort : B2M2\nVotre score personnel : 3/5\nScore du binôme : 7/10\nProbabilité associée : 70%-80%\nRésultat final : Pénalité évitée",
-  "739935": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 5/5\nProbabilité associée : 90%-100%\nRésultat final : Bonus obtenu",
-  "236739": "Condition : Team Bonus\nManche tirée au sort : B2M2\nVotre score personnel : 5/5\nScore du binôme : 8/10\nProbabilité associée : 81%-90%\nRésultat final : Bonus obtenu",
-  "738327": "Condition : Individual Penalty\nManche tirée au sort : B2M2\nVotre score : 5/5\nProbabilité associée : 90%-100%\nRésultat final : Pénalité évitée",
-  "802153": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 5/5\nProbabilité associée : 90%-100%\nRésultat final : Bonus obtenu",
-  "950226": "Condition : Team Bonus\nManche tirée au sort : B2M2\nVotre score personnel : 4/5\nScore du binôme : 8/10\nProbabilité associée : 81%-90%\nRésultat final : Bonus obtenu",
-  "337742": "Condition : Individual Penalty\nManche tirée au sort : B2M2\nVotre score : 4/5\nProbabilité associée : 70%-80%\nRésultat final : Pénalité évitée",
-  "495542": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 5/5\nProbabilité associée : 90%-100%\nRésultat final : Bonus obtenu",
-  "311424": "Condition : Individual Penalty\nManche tirée au sort : B2M2\nVotre score : 5/5\nProbabilité associée : 90%-100%\nRésultat final : Pénalité évitée",
-  "149132": "Condition : Individual Penalty\nManche tirée au sort : B2M2\nVotre score : 5/5\nProbabilité associée : 90%-100%\nRésultat final : Pénalité évitée",
-  "713462": "Condition : Team Penalty\nManche tirée au sort : B2M2\nVotre score personnel : 3/5\nScore du binôme : 8/10\nProbabilité associée : 81%-90%\nRésultat final : Pénalité évitée",
-  "129197": "Condition : Individual Penalty\nManche tirée au sort : B2M2\nVotre score : 5/5\nProbabilité associée : 90%-100%\nRésultat final : Pénalité évitée",
-  "121150": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 5/5\nProbabilité associée : 90%-100%\nRésultat final : Bonus obtenu",
-  "753014": "Condition : Team Penalty\nManche tirée au sort : B2M2\nVotre score personnel : 0/5\nScore du binôme : 3/10\nProbabilité associée : 21%-30%\nRésultat final : Pénalité appliquée",
-  "130203": "Condition : Team Penalty\nManche tirée au sort : B2M2\nVotre score personnel : 3/5\nScore du binôme : 3/10\nProbabilité associée : 21%-30%\nRésultat final : Pénalité appliquée",
-  "476791": "Condition : Team Penalty\nManche tirée au sort : B2M2\nVotre score personnel : 4/5\nScore du binôme : 9/10\nProbabilité associée : 91%-95%\nRésultat final : Pénalité évitée",
-  "757018": "Condition : Team Bonus\nManche tirée au sort : B2M2\nVotre score personnel : 5/5\nScore du binôme : 8/10\nProbabilité associée : 81%-90%\nRésultat final : Bonus non obtenu",
-  "547040": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 2/5\nProbabilité associée : 30%-40%\nRésultat final : Bonus non obtenu",
-  "406758": "Condition : Team Penalty\nManche tirée au sort : B2M2\nVotre score personnel : 5/5\nScore du binôme : 10/10\nProbabilité associée : 96%-100%\nRésultat final : Pénalité évitée",
-  "197506": "Condition : Team Penalty\nManche tirée au sort : B2M2\nVotre score personnel : 4/5\nScore du binôme : 6/10\nProbabilité associée : 56%-65%\nRésultat final : Pénalité évitée",
-  "539870": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 1/5\nProbabilité associée : 10%-20%\nRésultat final : Bonus non obtenu",
-  "981848": "Condition : Team Bonus\nManche tirée au sort : B2M2\nVotre score personnel : 5/5\nScore du binôme : 9/10\nProbabilité associée : 91%-95%\nRésultat final : Bonus obtenu",
-  "625445": "Condition : Individual Penalty\nManche tirée au sort : B2M2\nVotre score : 4/5\nProbabilité associée : 70%-80%\nRésultat final : Pénalité appliquée",
-  "654757": "Condition : Team Penalty\nManche tirée au sort : B2M2\nVotre score personnel : 4/5\nScore du binôme : 7/10\nProbabilité associée : 70%-80%\nRésultat final : Pénalité évitée",
-  "140933": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 3/5\nProbabilité associée : 50%-60%\nRésultat final : Bonus non obtenu",
-  "456312": "Condition : Team Penalty\nManche tirée au sort : B2M2\nVotre score personnel : 1/5\nScore du binôme : 5/10\nProbabilité associée : 45%-55%\nRésultat final : Pénalité évitée"
+  "181891": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 4/5\nProbabilité associée : 70%-80%\nRésultat final : Bonus obtenu"
 };
-<script>
+
 function checkID() {
-  alert("Button works");
-
-  const id = document.getElementById("idInput").value.trim();
-  alert("ID entered: " + id);
-
+  const enteredID = document.getElementById("idInput").value.trim();
   const resultDiv = document.getElementById("result");
 
-  if (data[id]) {
-    resultDiv.innerText = data[id];
+  if (data[enteredID]) {
+    resultDiv.innerText = data[enteredID];
   } else {
-    resultDiv.innerText = "ID not found. You entered: " + id;
+    resultDiv.innerText = "ID not found. You entered: " + enteredID;
   }
 }
 </script>
