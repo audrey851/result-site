@@ -20,13 +20,15 @@
       margin-top: 30px;
       font-size: 20px;
       font-weight: bold;
+      white-space: pre-line;
+}
     }
   </style>
 </head>
 <body>
 
 <h2>Enter your ID</h2>
-<p>Les résultats seront disponibles une fois toutes les données collectées (prévu à partir du 1 juin).</p>
+<p>Les résultats individuels sont maintenant disponibles. Veuillez entrer votre identifiant de participation.</p>
 <input id="idInput" placeholder="Your ID">
 <button onclick="checkID()">See result</button>
 
@@ -131,8 +133,8 @@ function checkID() {
   const id = document.getElementById("idInput").value.trim();
   const resultDiv = document.getElementById("result");
 
-  if (data[id]) {
-    resultDiv.innerText = data[id];
+  if (data[CODEID]) {
+    resultDiv.innerText = data[CODEID];
   } else {
     resultDiv.innerText = "ID not found";
   }
