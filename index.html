@@ -128,14 +128,19 @@ const data = {
   "140933": "Condition : Individual Bonus\nManche tirée au sort : B2M2\nVotre score : 3/5\nProbabilité associée : 50%-60%\nRésultat final : Bonus non obtenu",
   "456312": "Condition : Team Penalty\nManche tirée au sort : B2M2\nVotre score personnel : 1/5\nScore du binôme : 5/10\nProbabilité associée : 45%-55%\nRésultat final : Pénalité évitée"
 };
+<script>
 function checkID() {
+  alert("Button works");
+
   const id = document.getElementById("idInput").value.trim();
+  alert("ID entered: " + id);
+
   const resultDiv = document.getElementById("result");
 
   if (data[id]) {
     resultDiv.innerText = data[id];
   } else {
-    resultDiv.innerText = "ID not found";
+    resultDiv.innerText = "ID not found. You entered: " + id;
   }
 }
 </script>
