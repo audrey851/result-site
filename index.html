@@ -133,8 +133,8 @@ function checkID() {
   const id = document.getElementById("idInput").value.trim();
   const resultDiv = document.getElementById("result");
 
-  if (data[CODEID]) {
-    resultDiv.innerText = data[CODEID];
+  if (data[id]) {
+    resultDiv.innerText = data[id];
   } else {
     resultDiv.innerText = "ID not found";
   }
